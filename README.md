@@ -54,4 +54,4 @@ npm start
 
 ### 🌐 Live Demo
 
-👉👉 https://staylio-napw.onrender.com/listings
+👉 https://staylio-napw.onrender.com/listings
