@@ -5,23 +5,28 @@ const Listing = require("../models/listing");
 
 // INDEX Route
 module.exports.index = async function (req, res) {
-    let { search } = req.query;
-    let allListings;
+    let { search, category } = req.query;
+    let filter = {};
 
-    if (search && search.trim() !== "") {
-        // Case-insensitive search on title, location, and country
-        allListings = await Listing.find({
-            $or: [
-                { title: { $regex: search, $options: "i" } },
-                { location: { $regex: search, $options: "i" } },
-                { country: { $regex: search, $options: "i" } },
-            ]
-        });
-    } else {
-        allListings = await Listing.find({});
+    if (category && category.trim() !== "") {
+        filter.category = category;
     }
 
-    res.render("listings/index.ejs", { allListings, search: search || "" });
+    if (search && search.trim() !== "") {
+        filter.$or = [
+            { title: { $regex: search, $options: "i" } },
+            { location: { $regex: search, $options: "i" } },
+            { country: { $regex: search, $options: "i" } },
+        ];
+    }
+
+    const allListings = await Listing.find(filter);
+
+    res.render("listings/index.ejs", { 
+        allListings, 
+        search: search || "", 
+        category: category || "" 
+    });
 };
 
 // NEW Route
