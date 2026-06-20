@@ -1,24 +1,44 @@
 <% layout("/layouts/boilerplate") %>
-<div class="row mt-3">
-    <div class="col-6 offset-3">
-        <form method="post" action="/signup" novalidate class="needs-validation">
-            <h3>Sign Up</h3>
-            <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input name="username" placeholder="enter-username" type="text" class="form-control" required>
-                <div class="invalid-feedback">Please enter a valid username.</div>
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input name="email" placeholder="enter-email" type="email" class="form-control" required>
-                <div class="invalid-feedback">Please enter a valid email address.</div>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input name="password" placeholder="enter-password" type="password" class="form-control" required>
-                <div class="invalid-feedback">Please enter a valid password.</div>
-            </div>
-            <button class="btn btn-success">Sign Up</button>
-            </form>
-        </div>
-        </div>
+
+<div class="auth-wrapper">
+  <div class="auth-card">
+
+    <div class="auth-logo">
+      <i class="fa-regular fa-compass"></i>
+      <h2>Create Account</h2>
+      <p>Join Staylio and start exploring</p>
+    </div>
+
+    <form method="post" action="/signup" novalidate class="needs-validation">
+
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input id="username" name="username" placeholder="Choose a username" type="text"
+          class="form-control" required>
+        <div class="invalid-feedback">Please enter a valid username.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Email Address</label>
+        <input id="email" name="email" placeholder="Enter your email" type="email"
+          class="form-control" required>
+        <div class="invalid-feedback">Please enter a valid email address.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input id="password" name="password" placeholder="Create a password" type="password"
+          class="form-control" required>
+        <div class="invalid-feedback">Please enter a valid password.</div>
+      </div>
+
+      <button class="btn auth-submit-btn mt-2" type="submit">Create Account</button>
+
+    </form>
+
+    <div class="auth-footer-link">
+      Already have an account? <a href="/login">Login</a>
+    </div>
+
+  </div>
+</div>

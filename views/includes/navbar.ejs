@@ -1,58 +1,74 @@
-<style>
-  .search-btn{
-    background-color: #ff385c;
-    color: white;
-    border-radius: 25px;
-    padding: 0 1rem 0 1rem;
-  }
-  .search-btn:hover{
-    background-color: #e31c4b;
-    color: white;
-  }
-  .search-btn i{
-    display: inline;
-    margin-right: 0.5rem;
-  }
-  .serch-inp{
-    border-radius: 25px;
-    padding:0.5rem 3rem 0.5rem 3rem;
-    font-size: 1rem;
-  }
-</style>
+<!-- Navbar inline styles removed — all handled in style.css -->
 
+<nav class="navbar navbar-expand-md sticky-top">
+  <div class="container-fluid px-4">
 
-<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+    <!-- Brand Logo -->
+    <a class="navbar-brand d-flex align-items-center gap-2" href="/listings">
+      <!-- Unique Staylio SVG Logo: Location pin with S -->
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="staylio-grad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#fe424d" />
+            <stop offset="100%" stop-color="#d62839" />
+          </linearGradient>
+        </defs>
+        <!-- Pin shape -->
+        <path d="M17 2C11.477 2 7 6.477 7 12c0 7.5 10 20 10 20s10-12.5 10-20c0-5.523-4.477-10-10-10z"
+          fill="url(#staylio-grad)" />
+        <!-- White circle inside pin -->
+        <circle cx="17" cy="12" r="5.5" fill="white" opacity="0.95" />
+        <!-- Letter S inside -->
+        <text x="17" y="16" text-anchor="middle" font-size="7.5" font-weight="800" fill="#fe424d">S</text>
+      </svg>
+      <span style="font-weight:800; font-size:1.15rem; letter-spacing:-0.5px; color:#1a1a2e;">Staylio</span>
+    </a>
+
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        
+
+      <!-- Left links -->
+      <div class="navbar-nav me-auto">
         <a class="nav-link" href="/listings">Explore</a>
-        
       </div>
-      <div class="navbar-nav ms-auto">
-        <form class="d-flex" role="search" action="/listings" method="GET">
-        <input class="form-control me-2 serch-inp" type="search" name="search" placeholder="Search destinations" value="<%= typeof search !== 'undefined' ? search : '' %>" />
-        <button class="btn search-btn" type="submit"> <i class="fa-solid fa-magnifying-glass"></i>Search</button>
+
+      <!-- Search bar (center) -->
+      <form class="d-flex me-3" role="search" action="/listings" method="GET">
+        <input class="form-control me-2 serch-inp" type="search" name="search" placeholder="Search destinations"
+          value="<%= typeof search !== 'undefined' ? search : '' %>" />
+        <button class="btn search-btn" type="submit">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
       </form>
+
+      <!-- Right links -->
+      <div class="navbar-nav d-flex align-items-center gap-1">
+        <a class="nav-link" href="/listings/new">List your property</a>
+
+        <% if(!currentUser) { %>
+          <a class="nav-link" href="/signup"><b>Sign Up</b></a>
+          <a class="btn nav-login-btn ms-1" href="/login">
+            <i class="fa-solid fa-right-to-bracket me-1"></i> Login
+          </a>
+          <% } %>
+
+            <% if(currentUser) { %>
+              <span class="nav-link text-muted" style="font-size:0.85rem;">
+                Hi, <b>
+                  <%= currentUser.username %>
+                </b>
+              </span>
+              <a class="nav-link btn btn-sm px-3 py-1 ms-1" href="/logout"
+                style="border:1.5px solid #fe424d;color:#fe424d;border-radius:2rem;font-weight:600;">
+                Logout
+              </a>
+              <% } %>
       </div>
-      <div class="navbar-nav ms-auto">
-        <a class="nav-link" href="/listings/new">Staylio your home</a>
-      <% if(!currentUser) { %>
-       <div class="navbar-nav ms-auto">
-        <a class="nav-link"  href="/signup"><b>Sign Up</b></a>
-        <a class="nav-link" href="/login"><b>Login</b></a>
-       </div>
-        <% } %>
-        <% if(currentUser) { %>
-        <div class="navbar-nav ms-auto">
-        <a class="nav-link" href="/logout">Logout</a>
-        </div>
-        <% } %>
-        </div>
+
     </div>
   </div>
-</nav> 
+</nav>

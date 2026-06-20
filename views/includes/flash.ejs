@@ -1,12 +1,17 @@
- <%if (success && success.length) { %>
-<div class="alert alert-success alert-dismissible fade show col-6 offset-3" role="alert">
-    <%= success %>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<% if (success && success.length) { %>
+<div class="alert alert-success alert-dismissible fade show flash-msg" role="alert"
+  style="border-left: 4px solid #198754; background: linear-gradient(135deg,#d1f7e0,#eafff4);">
+  <i class="fa-solid fa-circle-check me-2" style="color:#198754;"></i>
+  <%= success %>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 <% } %>
-    <%if (error && error.length) { %>
-<div class="alert alert-danger alert-dismissible fade show col-6 offset-3" role="alert">
-    <%= error %>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+<% if (error && error.length) { %>
+<div class="alert alert-danger alert-dismissible fade show flash-msg" role="alert"
+  style="border-left: 4px solid #fe424d; background: linear-gradient(135deg,#ffe0e3,#fff5f5);">
+  <i class="fa-solid fa-circle-xmark me-2" style="color:#fe424d;"></i>
+  <%= error %>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 <% } %>

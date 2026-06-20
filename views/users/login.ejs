@@ -1,19 +1,37 @@
 <% layout("/layouts/boilerplate") %>
-<div class="row mt-3">
-    <div class="col-6 offset-3">
-        <form method="post" action="/login" novalidate class="needs-validation">
-            <h3>Login</h3>
-            <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input name="username" placeholder="enter-username" type="text" class="form-control" required>
-                <div class="invalid-feedback">Please enter your username.</div>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input name="password" placeholder="enter-password" type="password" class="form-control" required>
-                <div class="invalid-feedback">Please enter your password.</div>
-            </div>
-            <button class="btn btn-primary">Login</button>
-        </form>
-        </div>
+
+<div class="auth-wrapper">
+  <div class="auth-card">
+
+    <div class="auth-logo">
+      <i class="fa-regular fa-compass"></i>
+      <h2>Welcome Back</h2>
+      <p>Sign in to your Staylio account</p>
     </div>
+
+    <form method="post" action="/login" novalidate class="needs-validation">
+
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input id="username" name="username" placeholder="Enter your username" type="text"
+          class="form-control" required>
+        <div class="invalid-feedback">Please enter your username.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input id="password" name="password" placeholder="Enter your password" type="password"
+          class="form-control" required>
+        <div class="invalid-feedback">Please enter your password.</div>
+      </div>
+
+      <button class="btn auth-submit-btn mt-2" type="submit">Login</button>
+
+    </form>
+
+    <div class="auth-footer-link">
+      Don't have an account? <a href="/signup">Sign Up</a>
+    </div>
+
+  </div>
+</div>
